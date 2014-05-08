@@ -49,6 +49,7 @@ var propertyGeoJsonStyle = {
 var map = L.map('map', { 
     center: new L.LatLng(33.66099, -95.556742),
     zoom: 12,
+    minZoom: 10,
     inertia: true,
     attributionControl: false,
 	zoomAnimation: true,
