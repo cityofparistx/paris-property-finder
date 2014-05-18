@@ -5,19 +5,26 @@ html, body{
     font-family: "Verdana", "Arial";
 }
 
-#mapcontent {
-    position: absolute;
-    left: 350px;
-    top: 0px;
-    bottom: 0px;
-    right: 0px;
+#map-content{
+    width: 700px;
+    min-height: 95%;
+    border: solid 3px #C7C7C7;
+    border-radius: 15px;
+    margin: 10px auto;
+    padding: 10px;
 }
 
-#map { 
+#map {
     width: 100%;
-    height: 100%;
+    height: 400px;
 }
 
+#header{
+    width: 100%;
+    height: 72px;
+    margin: 0;
+
+}
 
 #search {
     width: 250px;
@@ -62,17 +69,9 @@ html, body{
     background-color: #357AE8;
 }
 
-#sidebar {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    bottom: 0px;
-    width: 350px;
-    font-size: 12px;
-}
-
 #info {
-    padding-top: 15px;
+    width: 100%;
+    font-size: 12px;
 }
 
 #data-section {
@@ -108,7 +107,6 @@ html, body{
     position: absolute;
     bottom: 20px;
     right: 20px;
-    z-index: 1000;
 }
 
 #legend:hover {
@@ -124,8 +122,18 @@ html, body{
         display: none;
     }
         
+    #map-content{
+        margin: 0;
+        border: 0;
+    }
+    
+    #data-section {
+        border: solid .5px #A7A7A7;
+    }
 }
 
 @media all and (max-width: 750px){
-
+    #map-content { width: 90%; }
+    
+    #map{ height: 300px; }
 }
