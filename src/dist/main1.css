@@ -127,5 +127,16 @@ html, body{
 }
 
 @media all and (max-width: 750px){
+    #mapcontent {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 300;
+    }
 
+    #sidebar {
+        top: 300;
+        left: 0;
+        right: 0;
+    }
 }
