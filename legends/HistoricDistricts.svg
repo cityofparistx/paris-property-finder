@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="ReinvestmentZone.svg">
+   sodipodi:docname="HistoricDistricts.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,7 +25,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.6"
-     inkscape:cx="103.57143"
+     inkscape:cx="72.142859"
      inkscape:cy="64.227121"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -51,7 +51,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -72,7 +72,7 @@
          y="1035.0814"
          id="tspan2991">Historic Districts </tspan></text>
     <rect
-       style="fill:#e188c8;fill-opacity:1;stroke:#141414;stroke-width:1.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:#cdaa66;fill-opacity:1;stroke:#141414;stroke-width:1.50000000000000000;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect2997"
        width="40"
        height="25"
