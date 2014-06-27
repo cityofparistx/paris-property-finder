@@ -169,6 +169,42 @@ function searchByParcelID(propertyID){
 }
 
 //**
+//Legend Events
+//**
+
+var legend = '';
+
+map.on('overlayadd', function(e){
+    if (e.name === "Zoning") {
+        legend = 'dist/legends/Zoning.png';
+        document.getElementById('legend').innerHTML = '<img src="' + legend + '">';
+        document.getElementById('legend').style.visibility = "visible";
+    } else if (e.name === "Landuse") {
+        legend = 'dist/legends/Landuse.png';
+        document.getElementById('legend').innerHTML = '<img src="' + legend + '">';
+        document.getElementById('legend').style.visibility = "visible";
+    } else if (e.name === "FEMA") {
+        legend = 'dist/legends/FEMA.png';
+        document.getElementById('legend').innerHTML = '<img src="' + legend + '">';
+        document.getElementById('legend').style.visibility = "visible";
+    } else if (e.name === "Reinvestment Zone") {
+        legend = 'dist/legends/ReinvestmentZone.png';
+        document.getElementById('legend').innerHTML = '<img src="' + legend + '">';
+        document.getElementById('legend').style.visibility = "visible";
+    } else if (e.name === "Historic Districts") {
+        legend = 'dist/legends/HistoricDistricts.png';
+        document.getElementById('legend').innerHTML = '<img src="' + legend + '">';
+        document.getElementById('legend').style.visibility = "visible";
+    } else {
+        legend = '';
+        document.getElementById('legend').innerHTML = '';
+        document.getElementById('legend').style.visibility = "hidden";
+    }
+});
+
+
+
+//**
 //Getting and Setting URL arguments
 //**
 
@@ -194,6 +230,7 @@ window.onload = function() {
 	document.getElementById("searchbox").value = "";
    
     loadByQuery();
+    
 }
 
 function keyPressListener(e) {

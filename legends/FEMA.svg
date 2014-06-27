@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="220"
-   height="80"
+   height="105"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
@@ -25,15 +25,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="134.6875"
+     inkscape:cx="78.973214"
      inkscape:cy="45.502698"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1855"
-     inkscape:window-height="1056"
-     inkscape:window-x="1985"
-     inkscape:window-y="24"
+     inkscape:window-width="1680"
+     inkscape:window-height="988"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
@@ -59,7 +59,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-972.3622)">
+     transform="translate(0,-947.3622)">
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
@@ -72,7 +72,7 @@
          y="1033.6698"
          id="tspan2991">500 Year Floodway </tspan></text>
     <rect
-       style="fill:#c3ffbe;fill-opacity:1;stroke:#141414;stroke-width:1.50000000000000000;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:#acffa5;fill-opacity:1;stroke:#141414;stroke-width:1.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect2997"
        width="40"
        height="25"
@@ -80,7 +80,7 @@
        y="10"
        transform="translate(0,1007.3622)" />
     <rect
-       style="fill:#bfe8ff;fill-opacity:1;stroke:#141414;stroke-width:1.50000000000000000;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:#c7e5f7;fill-opacity:1;stroke:#141414;stroke-width:1.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect3039"
        width="40"
        height="25"
@@ -98,5 +98,16 @@
          id="tspan3043"
          x="60"
          y="998.6698">100 Year Floodway</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+       x="10"
+       y="967.36218"
+       id="text3041-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3043-7"
+         x="10"
+         y="967.36218">Flood Zone Legend</tspan></text>
   </g>
 </svg>
