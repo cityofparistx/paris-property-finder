@@ -109,7 +109,7 @@ function updatePropertyInfo(property){
     if (property.situs_st_1) { address = address + removeNull(property.situs_st_1) + ' ' };
     if (property.situs_st_2) { address = address + removeNull(property.situs_st_2) };
 
-    injectText = "<div id='data-section'><b>" + property.prop_id + "</b>  -  <a href=http://esearch.lamarcad.org/Property/View/" + property.prop_id + " target=_blank>LamarCAD</a></div>"
+    injectText = "<div id='data-section'><b>" + property.PROP_ID + "</b>  -  <a href=http://esearch.lamarcad.org/Property/View/" + property.PROP_ID + " target=_blank>LamarCAD</a></div>"
     
                 + "<div id='data-section'><div id='row'><div id='data-left'><b>Address:</b></div><div id='data-right'>" + address + "</div></div>"
                 + "<div id='row'><div id='data-left'><b>Owner:</b></div><div id='data-right'>" + removeNull(property.file_as_na) + "</div></div>"
@@ -120,9 +120,10 @@ function updatePropertyInfo(property){
 				+ "<div id='row'><div id='data-left'><b>Land Value:</b></div><div id='data-right'>" + removeNull(property.land_val) + "</div></div>"
 				+ "<div id='row'><div id='data-left'><b>Improved Value:</b></div><div id='data-right'>" + removeNull(property.imprv_val) + "</div></div></div>"
 
-				+ "<div id='data-section'><div id='row'><div id='data-left'><b>Zoning:</b></div><div id='data-right'>" + property.zoning_t + "</div></div>"
-				+ "<div id='row'><div id='data-left'><b>Landuse:</b></div><div id='data-right'>" + property.landuse_t + "</div></div>"
-				+ "<div id='row'><div id='data-left'><b>FEMA:</b></div><div id='data-right'>" + property.fema + "</div></div></div>";
+				+ "<div id='data-section'><div id='row'><div id='data-left'><b>Zoning:</b></div><div id='data-right'>" + property.zoning + "</div></div>"
+				+ "<div id='row'><div id='data-left'><b>Landuse:</b></div><div id='data-right'>" + property.landuse + "</div></div>"
+                + "<div id='row'><div id='data-left'><b>Historic District:</b></div><div id='data-right'>" + property.hist_dist + "</div></div>"
+                + "<div id='row'><div id='data-left'><b>Reinvestment Zone:</b></div><div id='data-right'>" + property.reinvest + "</div></div>"
                 
     document.getElementById('info').innerHTML = injectText;
 }
@@ -143,11 +144,25 @@ function onMapClick(e) {
 }
 
 function searchByLatLng(lat, lng) {
+    /*
     SQLstring = "http://cityofparistx.cartodb.com/api/v2/sql/?q=SELECT * FROM parcels WHERE ST_Contains(parcels.the_geom, ST_GeomFromText('POINT(" + lng + " " + lat + ")',4326))&callback=?&format=geojson";
     $.getJSON(SQLstring, function(data){
         if (data.features == 0){alert("No property at that location.")}
         updateProperty(data.features[0]);
     }).fail (function(jqXHR, textStatus) { alert(textStatus) });
+    */
+    
+    L.esri.Tasks.query('http://services2.arcgis.com/YXGc5lG6eRCB6XBL/arcgis/rest/services/ParcelsService/FeatureServer/0')
+        .nearby(L.latLng(lat, lng), 0)
+        .run(function(error, data, response) {
+            if (data.features == 0){
+                alert("No property at that location.");
+            } else {
+                updateProperty(data.features[0]);
+            }
+            //updateProperty(data.features[0]);
+        });
+    
 }
 
 map.on('click', onMapClick);
@@ -161,11 +176,22 @@ function onSearchClick() {
 }
 
 function searchByParcelID(propertyID){
+    /*
     SQLstring = "http://cityofparistx.cartodb.com/api/v2/sql/?q=SELECT * FROM parcels WHERE prop_id =" + propertyID + "&callback=?&format=geojson";
     $.getJSON(SQLstring, function(data){
         if (data.features == 0){alert("No property with that ID.")}
         updateProperty(data.features[0]);
     }).fail (function(jqXHR, textStatus) { alert(textStatus) });
+    */
+    
+    L.esri.Tasks.query('http://services2.arcgis.com/YXGc5lG6eRCB6XBL/arcgis/rest/services/ParcelsService/FeatureServer/0')
+        .where("PROP_ID = " + propertyID)
+        .run(function(error, data, response) {
+            if (data.features == 0){alert("No property with that ID.")
+            } else {
+                updateProperty(data.features[0]);
+            }
+        });
 }
 
 //**
@@ -202,23 +228,35 @@ map.on('overlayadd', function(e){
     }
 });
 
-
+function onPrintClick() {
+    url = 'print.htm';
+    
+    var query = History.getState().url.split("?")[1]
+    if (query){
+     url = url + '?' + query
+    }
+    
+    window.open(url, '_blank');
+}
 
 //**
 //Getting and Setting URL arguments
 //**
 
 function getQueryVariable(variable){      
-       //var query = window.location.search.substring(1);
-       var query = History.getState().url.split("?")[1];
-       //alert(History.getState().data[0]);
-       
-       var vars = query.split("&");
-       for (var i=0;i<vars.length;i++) {
+        //var query = window.location.search.substring(1);
+        var query = History.getState().url.split("?")[1];
+        //alert(History.getState().data[0]);
+
+        if (!query) {
+            query = "";
+        }
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
                var pair = vars[i].split("=");
                if(pair[0] == variable){return pair[1];}
-       }
-       return(false);
+        }
+        return(false);
 }
 
 //**
@@ -243,11 +281,11 @@ function loadByQuery() {
     loadedParcelID = getQueryVariable("id");
     loadedLat = getQueryVariable("lat");
     loadedLng = getQueryVariable("lng");
+    
     if (typeof loadedParcelID === "string") {
         searchByParcelID(loadedParcelID);
     } else if (typeof loadedLat === "string" && typeof loadedLng === "string") {
         searchByLatLng(loadedLat, loadedLng);
-
     }
     
     document.getElementById("searchbox").value = "";
@@ -262,3 +300,4 @@ History.Adapter.bind(window,'statechange',function(){
     historyStateChange = true;
     
 });
+
